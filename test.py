@@ -21,3 +21,27 @@ print("--")
 
 t2 = lite.get_date_from_linkedin_activity(example_comment)
 print(t2)
+
+
+
+# 2nd 
+
+# Local time
+t1 = lite.get_date_from_linkedin_comment(example_comment, True)
+print(t1)
+
+print("--")
+
+t2 = lite.get_date_from_linkedin_activity(example_comment, True)
+print(t2)
+
+# UTC
+
+print("=====")
+t1 = lite.get_date_from_linkedin_comment(example_comment)
+print(t1)
+
+print("--")
+
+t2 = lite.get_date_from_linkedin_activity(example_comment)
+print(t2)
