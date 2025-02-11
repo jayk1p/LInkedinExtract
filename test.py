@@ -24,7 +24,7 @@ print(t2)
 
 
 
-# 2nd 
+# 2nd (this didn't help create a 2nd section on the webpage...)
 
 # Local time
 t1 = lite.get_date_from_linkedin_comment(example_comment, True)
