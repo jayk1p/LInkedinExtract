@@ -1,68 +1,44 @@
-function getPostId() {
-  const linkedinURL= document.querySelector("#url").value;
+function getPostId(urlId) {
+  const linkedinURL = document.querySelector(`#${urlId}`).value;
   const regex = /([0-9]{19})/;
   const postId = regex.exec(linkedinURL)?.pop();
   return postId;
 }
 
-function getCommentId() {
-  const linkedinURL = decodeURIComponent(document.querySelector("#url").value);
+function getCommentId(urlId) {
+  const linkedinURL = decodeURIComponent(document.querySelector(`#${urlId}`).value);
   const regex = /fsd_comment:\((\d+),urn:li:activity:\d+\)/;
   const match = regex.exec(linkedinURL);
   
-  if (match) {
-    const commentId = match[1]; // The captured group
-    return commentId;
-  }
-
-  return null; // or handle the case when no match found
+  return match ? match[1] : null; // Return commentId or null
 }
 
 function extractUnixTimestamp(postId) {
-  // BigInt needed as we need to treat postId as 64 bit decimal. This reduces browser support.
-  if(postId == null) {
-    return "";
-  }
+  if (!postId) return "";
   const asBinary = BigInt(postId).toString(2);
   const first41Chars = asBinary.slice(0, 41);
-  const timestamp = parseInt(first41Chars, 2);
-  return timestamp;
+  return parseInt(first41Chars, 2);
 }
 
 function unixTimestampToHumanDate(timestamp) {
-  const dateObject = new Date(timestamp);
-  const humanDateFormat = dateObject.toUTCString() + " (UTC)";
-  return humanDateFormat;
+  return new Date(timestamp).toUTCString() + " (UTC)";
 }
 
 function unixTimestampToLocalDate(timestamp) {
-  const dateObject = new Date(timestamp);
-  const humanDateFormat = (""+dateObject).substring(0,25);
-  return humanDateFormat;
+  return ("" + new Date(timestamp)).substring(0, 25);
 }
 
-function getDate() {
-  const postId = getPostId();
-  const commentId = getCommentId();
-  console.log(commentId);
+function getDate(urlId, localTimeId, dateId) {
+  const postId = getPostId(urlId);
+  const commentId = getCommentId(urlId);
   
-  let unixTimestamp = "";
+  let unixTimestamp = commentId ? extractUnixTimestamp(commentId) : extractUnixTimestamp(postId);
   
-  if (commentId) {
-    unixTimestamp = extractUnixTimestamp(commentId);
-  }
-  else {
-    unixTimestamp = extractUnixTimestamp(postId);
-  }
-  
-  const humanDateFormat = unixTimestampToHumanDate(unixTimestamp);
-  document.querySelector("#date").textContent = humanDateFormat;
-  
-  const localDateFormat = unixTimestampToLocalDate(unixTimestamp);
-  document.querySelector("#localtime").textContent = localDateFormat;
+  document.querySelector(`#${dateId}`).textContent = unixTimestampToHumanDate(unixTimestamp);
+  document.querySelector(`#${localTimeId}`).textContent = unixTimestampToLocalDate(unixTimestamp);
 }
 
-function clearUrlField() { 
-  document.querySelector("#url").value = "";
-  document.querySelector("#url").focus();
+function clearUrlField(urlId) { 
+  document.querySelector(`#${urlId}`).value = "";
+  document.querySelector(`#${urlId}`).focus();
 }
