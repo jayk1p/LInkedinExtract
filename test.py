@@ -27,21 +27,21 @@ print(t2)
 # 2nd (this didn't help create a 2nd section on the webpage...)
 
 # Local time
-t1 = lite.get_date_from_linkedin_comment(example_comment, True)
-print(t1)
+t3 = lite.get_date_from_linkedin_comment(example_comment, True)
+print(t3)
 
 print("--")
 
-t2 = lite.get_date_from_linkedin_activity(example_comment, True)
-print(t2)
+t4 = lite.get_date_from_linkedin_activity(example_comment, True)
+print(t4)
 
 # UTC
 
 print("=====")
-t1 = lite.get_date_from_linkedin_comment(example_comment)
-print(t1)
+t3 = lite.get_date_from_linkedin_comment(example_comment)
+print(t3)
 
 print("--")
 
-t2 = lite.get_date_from_linkedin_activity(example_comment)
-print(t2)
+t4 = lite.get_date_from_linkedin_activity(example_comment)
+print(t4)
