@@ -17,36 +17,34 @@
   </head>
   <body>
     <script type="text/javascript" src="./extractor.js"></script>
-    <div class="form">
-      <label for="url">Linkedin post URL:</label>
-      <input type="text" id="url" name="url" />
-      <button onclick="getDate()">Get uploaded date</button>
-      <button onclick="clearUrlField()">Clear URL</button>
-    </div>
-    <div class="output">
-      <span id="label">Uploaded on: </span>
-      <span id="localtime"></span><br><br>
-      <span id="label2">UTC: </span>
-      <span id="date"></span>
-    </div>
+   <div class="form">
+  <label for="url1">Linkedin post URL:</label>
+  <input type="text" id="url1" name="url1" />
+  <button onclick="getDate('url1', 'localtime1', 'date1')">Get uploaded date</button>
+  <button onclick="clearUrlField('url1')">Clear URL</button>
+  </div>
+  <div class="output">
+    <span id="label1">Uploaded on: </span>
+    <span id="localtime1"></span><br><br>
+    <span id="label2_1">UTC: </span>
+    <span id="date1"></span>
+  </div>
 
-    <!-- br actually works... -->
-    <br>
-    <br>
-    <br>
-    
-    <div class="form">
-      <label for="url">Linkedin post URL:</label>
-      <input type="text" id="url" name="url" />
-      <button onclick="getDate()">Get uploaded date</button>
-      <button onclick="clearUrlField()">Clear URL</button>
-    </div>
-    <div class="output">
-      <span id="label">Uploaded on: </span>
-      <span id="localtime"></span><br><br>
-      <span id="label2">UTC: </span>
-      <span id="date"></span>
-    </div>
+  <br><br><br>
+
+  <div class="form">
+    <label for="url2">Linkedin post URL:</label>
+    <input type="text" id="url2" name="url2" />
+    <button onclick="getDate('url2', 'localtime2', 'date2')">Get uploaded date</button>
+    <button onclick="clearUrlField('url2')">Clear URL</button>
+  </div>
+  <div class="output">
+    <span id="label2">Uploaded on: </span>
+    <span id="localtime2"></span><br><br>
+    <span id="label2_2">UTC: </span>
+    <span id="date2"></span>
+  </div>
+
 
     
   </body>
